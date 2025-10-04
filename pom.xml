@@ -11,6 +11,9 @@
     </parent>
     <!--确定打包方式-->
     <packaging>pom</packaging>
+    <modules>
+        <module>services</module>
+    </modules>
     <groupId>com.sangui</groupId>
     <artifactId>cloud-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
