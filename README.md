@@ -15,7 +15,11 @@
 
    + 2023.0.3.2
 
-4. Nacos
+4. RuoYi-Vue
+
+   + 3.9.0
+
+5. Nacos
 
    + 
 
@@ -149,13 +153,13 @@
 
 详见 https://github.com/WuSangui571/sanguimall/tree/main/sql/init ，里面的五个 sql 文件。
 
-## 1.5. 若依
+## 1.5. 若依框架
 
-我们的商城的后台管理系统，使用开源项目：RuoYi-Vue。
+我们的商城的后台管理系统的前端和后台，使用开源项目：RuoYi-Vue。
 
 代码下载：https://gitee.com/y_project/RuoYi-Vue 
 
 文档浏览：https://doc.ruoyi.vip/ruoyi-vue/ 
 
-
+按照文档，访问：http://localhost/ ，默认账户/密码 `admin/admin123`。若能正确展示登录页面，并能成功登录，菜单及页面展示正常，则表明环境搭建成功
 
