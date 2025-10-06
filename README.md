@@ -27,7 +27,7 @@
 
 ## 1.2. 创建 SpringBoot 项目
 
-直接创建新的 SpringBoot 项目，取名 `sanguimall`，创建完成之后删掉除了 `.idea` 文件夹 和 `pom.xml` 之外的所有文件。并将 `pom.xml` 文件修改为：
+直接创建新的 SpringBoot 项目，取名 `sanguimall` ，创建完成之后删掉除了 `.idea` 文件夹 和 `pom.xml` 之外的所有文件。并将 `pom.xml` 文件修改为：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -44,15 +44,16 @@
     <packaging>pom</packaging>
     <modules>
         <module>services</module>
+        <module>services</module>
     </modules>
 
     <!--确定项目信息-->
     <groupId>com.sangui</groupId>
-    <artifactId>sanguimall</artifactId>
+    <artifactId>sanguimallv2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sanguimall</name>
-    <description>sanguimall</description>
-    
+    <name>sanguimallv2</name>
+    <description>sanguimallv2</description>
+
     <!--添加依赖配置信息-->
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
@@ -61,7 +62,7 @@
         <spring-cloud.version>2023.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2023.0.3.2</spring-cloud-alibaba.version>
     </properties>
-    
+
     <!--添加依赖-->
     <dependencyManagement>
         <dependencies>
@@ -108,14 +109,14 @@
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
        <modelVersion>4.0.0</modelVersion>
-       
+   
        <!--确定父项目信息-->
        <parent>
            <groupId>com.sangui</groupId>
-           <artifactId>sanguimall</artifactId>
+           <artifactId>sanguimallv2</artifactId>
            <version>0.0.1-SNAPSHOT</version>
        </parent>
-       
+   
        <dependencies>
            <!--未来可在此中加入依赖，每个具体的微服务模块都可以使用这个依赖（继承父依赖）-->
        </dependencies>
@@ -137,15 +138,15 @@
 
    在 services 里添加具体的微服务模块模块：`product`，该模块也是普通的 Java 模块，其父模块是 services。同样的道理，总共先生成如下微服务模块：
 
-   + product
+   + service-product
 
-   + order
+   + service-order
 
-   + ware
+   + service-ware
 
-   + coupon
+   + service-coupon
 
-   + member
+   + service-member
 
 ## 1.4. 数据库
 
@@ -161,23 +162,23 @@
 
    使用插件生成以下内容：（以 order 为例，另外四个微服务类似）
 
-   + project
+   + Project
      + 选择：`D:/02-WorkSpace/02-Java/sanguimall/services/order` 
 
-   + model 实体类
+   + Model 实体类
      + 设置该类的包为：`com.sangui.sanguimall.order.model`
 
-   + mapper 接口类
+   + Mapper 接口类
      + 设置接口的名字后缀为：`Mapper`
      + 设置该类的包为：`com.sangui.sanguimall.order.mapper`
-   + mapper 映射文件
+   + Mapper 映射文件
      + 设置该类的包为：`mapper`
 
    + 生成代码之前，取消勾选 Rpository-Annotation(Repository注解)，保留前面五个选项
 
 3. **公共化 model**
 
-   在 service 模块的同级目录上，新建一个普通 Java 模块，取名为 model，，这样，就可以删除各自服务之下的 model 包了，把这些 model 统一移至 model 模块里。
+   在 service 模块的同级目录上，新建一个普通 Java 模块，取名为 model，这样，就可以删除各自服务之下的 model 包了，把这些 model 统一移至 model 模块里。
 
    同时，因为 model 模块和 service 模块相对独立，就需要在 service 模块的 pom 文件中，加入 model 模块的依赖，如：
 
