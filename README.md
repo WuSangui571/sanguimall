@@ -149,9 +149,46 @@
 
 ## 1.4. 数据库
 
-为各个微服务模块，导入各自的数据库。
+1. **sql 文件导入**
 
-详见 https://github.com/WuSangui571/sanguimall/tree/main/sql/init ，里面的五个 sql 文件。
+   为各个微服务模块，导入各自的数据库。
+
+   详见 https://github.com/WuSangui571/sanguimall/tree/main/sql/init ，里面的五个 sql 文件。
+
+2. **逆向生成代码**
+
+   使用 Idea 插件 `Free MyBatis Tool` 自动生成代码。
+
+   使用插件生成以下内容：（以 order 为例，另外四个微服务类似）
+
+   + project
+     + 选择：`D:/02-WorkSpace/02-Java/sanguimall/services/order` 
+
+   + model 实体类
+     + 设置该类的包为：`com.sangui.sanguimall.order.model`
+
+   + mapper 接口类
+     + 设置接口的名字后缀为：`Mapper`
+     + 设置该类的包为：`com.sangui.sanguimall.order.mapper`
+   + mapper 映射文件
+     + 设置该类的包为：`mapper`
+
+   + 生成代码之前，取消勾选 Rpository-Annotation(Repository注解)，保留前面五个选项
+
+3. **公共化 model**
+
+   在 service 模块的同级目录上，新建一个普通 Java 模块，取名为 model，，这样，就可以删除各自服务之下的 model 包了，把这些 model 统一移至 model 模块里。
+
+   同时，因为 model 模块和 service 模块相对独立，就需要在 service 模块的 pom 文件中，加入 model 模块的依赖，如：
+
+   ```xml
+   <!--加入 model 依赖-->
+   <dependency>
+       <groupId>com.sangui</groupId>
+       <artifactId>model</artifactId>
+       <version>0.0.1-SNAPSHOT</version>
+   </dependency>
+   ```
 
 ## 1.5. 若依框架
 
